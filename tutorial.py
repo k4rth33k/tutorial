@@ -17,19 +17,21 @@ import random
 import wandb
 from wandb.keras import WandbCallback
 
+hyperparameter_defaults = dict(
+  dropout = 0.2,
+  hidden_layer_size = 128,
+  layer_1_size = 16,
+  layer_2_size = 32,
+  learn_rate = 0.01,
+  decay = 1e-6,
+  momentum = 0.9,
+  epochs = 8,
+)
 #Initialize wandb
-wandb.init(project="sample-project")
+wandb.init(config=hyperparameter_defaults, project="set-run-name-to-id")
+wandb.run.name = wandb.run.id
+wandb.run.save()
 config = wandb.config
-
-#Track hyperparameters
-config.dropout = 0.2
-config.hidden_layer_size = 128
-config.layer_1_size  = 16
-config.layer_2_size = 32
-config.learn_rate = 0.01
-config.decay = 1e-6
-config.momentum = 0.9
-config.epochs = 8
 
 (X_train_orig, y_train_orig), (X_test, y_test) = fashion_mnist.load_data()
 
