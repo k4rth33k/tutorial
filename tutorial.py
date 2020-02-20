@@ -17,6 +17,7 @@ import random
 import wandb
 from wandb.keras import WandbCallback
 
+# Set hyperparameters, which can be overwritten with a W&B Sweep
 hyperparameter_defaults = dict(
   dropout = 0.2,
   hidden_layer_size = 128,
@@ -27,10 +28,9 @@ hyperparameter_defaults = dict(
   momentum = 0.9,
   epochs = 8,
 )
-#Initialize wandb
-wandb.init(config=hyperparameter_defaults, project="set-run-name-to-id")
-wandb.run.name = wandb.run.id
-wandb.run.save()
+
+# Initialize wandb
+wandb.init(config=hyperparameter_defaults)
 config = wandb.config
 
 (X_train_orig, y_train_orig), (X_test, y_test) = fashion_mnist.load_data()
