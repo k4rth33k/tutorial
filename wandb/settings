@@ -1,5 +1,0 @@
-[default]
-project = set-run-name-to-id
-entity = wandb
-base_url = https://api.wandb.ai
-
