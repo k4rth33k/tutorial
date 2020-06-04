@@ -10,7 +10,6 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dropout, Dense, Flatten
 from keras.utils import np_utils
 from keras.optimizers import SGD
-from keras.callbacks import TensorBoard
 import random
 
 #Import wandb libraries
